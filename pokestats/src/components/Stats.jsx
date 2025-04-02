@@ -6,9 +6,17 @@ const Stats = ({ data, loading, error }) => {
 			{data && (
 				<ul className="pokemon-list">
 					{data.results.map((pokemon, index) => (
-						<li key={index}>
-							{index + 1}. {pokemon.name}
-						</li>
+						<div className="flexbox">
+							<img
+								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+									index + 1
+								}.png`}
+								alt={pokemon.name}
+							/>
+							<li key={index}>
+								{index + 1}. {pokemon.name}
+							</li>
+						</div>
 					))}
 				</ul>
 			)}

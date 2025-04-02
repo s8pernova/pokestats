@@ -12,7 +12,7 @@ function App() {
 	);
 
 	return (
-		<div className="border">
+		<div className="">
 			<Header />
 			<Sidebar />
 			<Stats data={data} loading={loading} error={error} />
