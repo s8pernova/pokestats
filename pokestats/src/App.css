@@ -59,7 +59,8 @@
 	overflow-x: hidden;
 	position: fixed;
 	width: 25%;
-	background: rgba(0, 0, 0, 0.05);
+	background: rgb(180, 54, 54);
+	color: #fff;
 }
 
 .pokemon-list {
@@ -88,14 +89,14 @@
 		width: 30%;
 		font-size: 1.5rem;
 	}
-}
+} */
 
 @media (min-width: 1024px) {
 	.sidebar-container {
-		width: 20%;
-		font-size: 2rem;
+		width: 250px;
+		/* font-size: 2rem; */
 	}
-} */
+}
 
 .card {
 	padding: 2em;
