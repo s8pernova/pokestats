@@ -27,4 +27,4 @@ const useFetchAPI = (url) => {
 	return { data, loading, error };
 };
 
-export default useFetchAPI;
+export { useFetchAPI };
