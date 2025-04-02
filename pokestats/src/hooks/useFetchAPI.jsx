@@ -4,6 +4,7 @@ const useFetchAPI = (url) => {
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [totalCount, setTotalCount] = useState(0);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -14,6 +15,7 @@ const useFetchAPI = (url) => {
 				}
 				const result = await response.json();
 				setData(result);
+				setTotalCount(result.count);
 			} catch (err) {
 				setError(err);
 			} finally {
@@ -24,7 +26,7 @@ const useFetchAPI = (url) => {
 		fetchData();
 	}, [url]);
 
-	return { data, loading, error };
+	return { data, loading, error, totalCount };
 };
 
 export { useFetchAPI };

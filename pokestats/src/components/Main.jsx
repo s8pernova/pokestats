@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Main = () => {
+const Main = ({maxPokemonCount}) => {
     const [pokemonCount, setPokemonCount] = useState(0);
 
     const increment = () => {
@@ -19,7 +19,7 @@ const Main = () => {
                 <button>Only Gen 1</button>
             </div>
             <div className="main-container">
-                <input type="range" min="0" max="20" value={pokemonCount} onChange={handleSliderChange}></input>
+                <input type="range" min="1" max={maxPokemonCount} value={pokemonCount} onChange={handleSliderChange}></input>
                 <button type="submit" onSubmit={increment}>Generate Pokémon!</button>
                 <h1>{pokemonCount}</h1>
             </div>

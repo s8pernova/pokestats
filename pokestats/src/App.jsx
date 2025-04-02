@@ -5,15 +5,16 @@ import Stats from "./components/Stats.jsx";
 import Header from "./components/Header.jsx";
 import Main from "./components/Main.jsx";
 
-const pokemonToFetch = 10;
-const { data, loading, error } = useFetchAPI(
-	`https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}`
-);
+const pokemonToFetch = 5;
 
 const App = () => {
+	const { data, loading, error, totalCount } = useFetchAPI(
+		`https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}`
+	);
+
 	return (
 		<>
-			<Main />
+			<Main maxPokemonCount={totalCount} />
 			<Header />
 			<Sidebar />
 			<Stats data={data} loading={loading} error={error} />
