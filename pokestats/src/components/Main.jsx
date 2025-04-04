@@ -1,30 +1,46 @@
 import { useState } from "react";
 
-const Main = ({maxPokemonCount}) => {
-    const [pokemonCount, setPokemonCount] = useState(0);
+const Main = ({ maxPokemonCount, setPokemonToFetch, setFilter }) => {
+	const [pokemonCount, setPokemonCount] = useState(10);
 
-    const increment = () => {
-        setPokemonCount(pokemonCount + 1);
-    };
+	const handleSliderChange = (e) => {
+		setPokemonCount(parseInt(e.target.value));
+	};
 
-    const handleSliderChange = (e) => {
-    setPokemonCount(parseInt(e.target.value));
-};
-    
-    return (
-        <div>
-            <div className="filter-container">
-                <button>Only Mega</button>
-                <button>Only Legendary</button>
-                <button>Only Gen 1</button>
-            </div>
-            <div className="main-container">
-                <input type="range" min="1" max={maxPokemonCount} value={pokemonCount} onChange={handleSliderChange}></input>
-                <button type="submit" onSubmit={increment}>Generate Pokémon!</button>
-                <h1>{pokemonCount}</h1>
-            </div>
-        </div>
-    );
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setPokemonToFetch(pokemonCount);
+	};
+
+	return (
+		<div>
+			<div className="filter-container">
+				<button onClick={() => setFilter("mega")} className="cool-btn">
+					Only Mega
+				</button>
+				<button onClick={() => setFilter("legendary")} className="cool-btn">
+					Only Legendary
+				</button>
+				<button onClick={() => setFilter("gen1")} className="cool-btn">
+					Only Gen 1
+				</button>
+			</div>
+			<div className="main-container">
+				<input
+					className="slider"
+					type="range"
+					min="1"
+					max={maxPokemonCount}
+					value={pokemonCount}
+					onChange={handleSliderChange}
+				/>
+				<h1>{pokemonCount}</h1>
+				<button className="cool-btn" type="button" onClick={handleSubmit}>
+					Generate Pokémon!
+				</button>
+			</div>
+		</div>
+	);
 };
 
 export default Main;

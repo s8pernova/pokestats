@@ -1,16 +1,16 @@
 ## 🎯 Goals
 
-- [ ] Fetch API data with the useEffect React hook and async/await syntax
-- [ ] Respond to events triggered by user interaction and handle user input
-- [ ] Use .map() to dynamically render a group of elements
-- [ ] Use .filter() to filter data based on user input
+- [x] Fetch API data with the useEffect React hook and async/await syntax
+- [x] Respond to events triggered by user interaction and handle user input
+- [x] Use .map() to dynamically render a group of elements
+- [x] Use .filter() to filter data based on user input
 
 ## ❗ Required Features
 
-- [ ] The site has a dashboard displaying a list of data fetched using an API call
-  - [ ] The dashboard should display at least 10 unique items, one per row
-  - [ ] The dashboard includes at least two features in each row
-- [ ] useEffect React hook and async/await are used
+- [x] The site has a dashboard displaying a list of data fetched using an API call
+  - [x] The dashboard should display at least 10 unique items, one per row
+  - [x] The dashboard includes at least two features in each row
+- [x] useEffect React hook and async/await are used
 - [ ] The app dashboard includes at least three summary statistics about the data
   - [ ] The app dashboard includes at least three summary statistics about the data, such as:
     - [ ] the total number of items in the dataset or which meet certain criteria in the dataset
