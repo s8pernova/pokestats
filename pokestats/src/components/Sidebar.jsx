@@ -9,6 +9,6 @@ const Sidebar = () => {
 			</div>
 		</div>
 	);
-};QD
+};
 
 export default Sidebar;
