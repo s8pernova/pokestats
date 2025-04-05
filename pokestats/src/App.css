@@ -27,6 +27,32 @@
 	width: 50px;
 }
 
+.summary-stats {
+	margin: 2rem 0;
+	background-color: #f0f8ff;
+	padding: 1rem;
+	border-radius: 8px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+.summary-stats ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.input-box {
+	width: 75px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.length-range-filters {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
 .border {
 	border: 2px solid red;
 }

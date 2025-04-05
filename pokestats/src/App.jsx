@@ -10,6 +10,8 @@ const App = () => {
 	const [pokemonToFetch, setPokemonToFetch] = useState(10);
 	const [filter, setFilter] = useState(null);
 	const [searchTerm, setSearchTerm] = useState("");
+	const [minLength, setMinLength] = useState(null);
+	const [maxLength, setMaxLength] = useState(null);
 
 	let apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}`;
 	if (filter === "mega") {
@@ -28,6 +30,8 @@ const App = () => {
 				maxPokemonCount={totalCount}
 				setPokemonToFetch={setPokemonToFetch}
 				setFilter={setFilter}
+				setMinLength={setMinLength}
+				setMaxLength={setMaxLength}
 			/>
 			<Header setSearchTerm={setSearchTerm} />
 			<Sidebar />
@@ -37,6 +41,8 @@ const App = () => {
 				error={error}
 				searchTerm={searchTerm}
 				filter={filter}
+				minLength={minLength}
+				maxLength={maxLength}
 			/>
 		</>
 	);
