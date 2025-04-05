@@ -35,5 +35,5 @@
 
 GIF created with [Ezgif](https://ezgif.com/)
 
-> ![NOTE]
+> [!NOTE]
 > Time constraints made it really difficult to get everything done. I will have these all done soon!
