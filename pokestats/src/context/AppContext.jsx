@@ -9,7 +9,8 @@ export const AppProvider = ({ children }) => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [minLength, setMinLength] = useState(null);
 	const [maxLength, setMaxLength] = useState(null);
-	const [showStats, setShowStats] = useState(true);
+	const [showStats, setShowStats] = useState(false);
+	const [showGraphs, setShowGraphs] = useState(false);
 	const [pokemon, setPokemon] = useState(null);
 
 	let apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}`;
@@ -35,9 +36,11 @@ export const AppProvider = ({ children }) => {
 				minLength,
 				setMinLength,
 				maxLength,
-                setMaxLength,
-                showStats,
-                setShowStats,
+				setMaxLength,
+				showStats,
+				setShowStats,
+				showGraphs,
+				setShowGraphs,
 				data,
 				loading,
 				error,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useCaptilize from "../hooks/useCapitalize.jsx";
+import useCaptilize from "../utils/capitalize.jsx";
 
 const PokemonDetail = () => {
 	const { name } = useParams();

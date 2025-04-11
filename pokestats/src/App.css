@@ -54,7 +54,10 @@
 	gap: 10px;
 }
 .summary-toggle .triangle {
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	transition: transform 0.2s ease;
 }
 .summary-toggle.open .triangle {
@@ -62,6 +65,50 @@
 }
 .summary-toggle h3 {
 	margin: 0;
+}
+
+.graph-stats {
+	margin: 2rem 0;
+	background-color: #f0f8ff;
+	padding: 1rem;
+	border-radius: 8px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+.graph-stats ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.graph-toggle {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+.graph-toggle.open {
+	flex-direction: column;
+}
+.graph-toggle .triangle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: transform 0.2s ease;
+}
+.graph-toggle.open .triangle {
+	transform: rotate(90deg);
+}
+.graph-toggle h3 {
+	margin: 0;
+}
+
+.chart-container {
+	padding: 1rem;
+}
+
+.chart-box {
+	margin: 2rem 0;
 }
 
 .input-box {

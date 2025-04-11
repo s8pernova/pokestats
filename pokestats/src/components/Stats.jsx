@@ -1,8 +1,10 @@
 import { useAppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PokemonCharts from "./PokemonCharts";
 
 const Stats = () => {
+	const [dotCount, setDotCount] = useState(0);
 	const {
 		data,
 		loading,
@@ -13,7 +15,19 @@ const Stats = () => {
 		maxLength,
 		showStats,
 		setShowStats,
+		showGraphs,
+		setShowGraphs,
 	} = useAppContext();
+
+	useEffect(() => {
+		if (!loading) return;
+
+		const interval = setInterval(() => {
+			setDotCount((prev) => (prev + 1) % 4);
+		}, 500);
+
+		return () => clearInterval(interval);
+	}, [loading]);
 
 	const filteredResults = data
 		?.filter((pokemon) =>
@@ -88,7 +102,7 @@ const Stats = () => {
 
 	return (
 		<div className="stats-container">
-			{loading && <p>Loading...</p>}
+			{loading && <p>Catching pokémon{".".repeat(dotCount)}</p>}
 			{error && <p>Error: {error.message}</p>}
 			{data && (
 				<>
@@ -121,14 +135,26 @@ const Stats = () => {
 					</div>
 
 					{/* Graphs */}
-					<div className="graphs pixel-font">
-						<h3>Graphs</h3>
-						<p>Coming soon...</p>
+					<div className="graph-stats pixel-font">
+						<div
+							className={`graph-toggle ${showGraphs ? "open" : ""}`}
+							onClick={() => setShowGraphs((prev) => !prev)}
+						>
+							<img
+								src="./src/assets/triangle.png"
+								width="15"
+								height="15"
+								className="triangle"
+							/>
+							<h3>Graphs</h3>
+
+							{showGraphs && <PokemonCharts />}
+						</div>
 					</div>
 
 					{/* Pokemon List */}
 					<ul className="pokemon-list">
-						{filteredResults.map((pokemon, index) => (
+						{filteredResults.map((pokemon) => (
 							<Link key={pokemon.name} to={`/pokemon/${pokemon.name}`}>
 								<div className="flexbox">
 									<img src={pokemon.sprites.front_default} alt={pokemon.name} />
