@@ -1,18 +1,27 @@
-const Stats = ({ data, loading, error, searchTerm, filter, filterLength, minLength, maxLength }) => {
-	const filteredResults = data?.results
+import { useAppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+const Stats = () => {
+	const {
+		data,
+		loading,
+		error,
+		searchTerm,
+		filter,
+		minLength,
+		maxLength,
+		showStats,
+		setShowStats,
+	} = useAppContext();
+
+	const filteredResults = data
 		?.filter((pokemon) =>
 			pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
 		)
 		?.filter((pokemon) =>
 			filter ? pokemon.name.startsWith(filter.toLowerCase()) : true
 		)
-		?.filter((pokemon) => {
-			const len = pokemon.name.length;
-			if (filterLength === "short") return len <= 5;
-			if (filterLength === "medium") return len > 5 && len <= 8;
-			if (filterLength === "long") return len > 8;
-			return true;
-		})
 		?.filter((pokemon) => {
 			const len = pokemon.name.length;
 			if (minLength !== null && len < minLength) return false;
@@ -25,7 +34,9 @@ const Stats = ({ data, loading, error, searchTerm, filter, filterLength, minLeng
 
 	const average =
 		nameLengths.length > 0
-			? (nameLengths.reduce((sum, len) => sum + len, 0) / nameLengths.length).toFixed(2)
+			? (
+					nameLengths.reduce((sum, len) => sum + len, 0) / nameLengths.length
+			  ).toFixed(2)
 			: 0;
 
 	const sortedLengths = [...nameLengths].sort((a, b) => a - b);
@@ -81,32 +92,51 @@ const Stats = ({ data, loading, error, searchTerm, filter, filterLength, minLeng
 			{error && <p>Error: {error.message}</p>}
 			{data && (
 				<>
+					{/* Summary Statistics */}
 					<div className="summary-stats pixel-font">
-						<h3>Summary Statistics</h3>
-						<ul>
-							<li>Total Pokémon displayed: {totalShown}</li>
-							<li>Mean name length: {average}</li>
-							<li>Median name length: {q2}</li>
-							<li>Mode name length: {mode()}</li>
-							<li>Q1 (25%): {q1}</li>
-							<li>Q2 (50%): {q2}</li>
-							<li>Q3 (75%): {q3}</li>
-						</ul>
+						<div
+							className={`summary-toggle ${showStats ? "open" : ""}`}
+							onClick={() => setShowStats((prev) => !prev)}
+						>
+							<img
+								src="./src/assets/triangle.png"
+								width="15"
+								height="15"
+								className="triangle"
+							/>
+							<h3>Summary Statistics</h3>
+						</div>
+
+						{showStats && (
+							<ul>
+								<li>Total Pokémon displayed: {totalShown}</li>
+								<li>Mean name length: {average}</li>
+								<li>Median name length: {q2}</li>
+								<li>Mode name length: {mode()}</li>
+								<li>Q1 (25%): {q1}</li>
+								<li>Q2 (50%): {q2}</li>
+								<li>Q3 (75%): {q3}</li>
+							</ul>
+						)}
 					</div>
 
+					{/* Graphs */}
+					<div className="graphs pixel-font">
+						<h3>Graphs</h3>
+						<p>Coming soon...</p>
+					</div>
+
+					{/* Pokemon List */}
 					<ul className="pokemon-list">
 						{filteredResults.map((pokemon, index) => (
-							<div className="flexbox" key={index}>
-								<img
-									src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-										index + 1
-									}.png`}
-									alt={pokemon.name}
-								/>
-								<div>
-									{index + 1}. {pokemon.name}
+							<Link key={pokemon.name} to={`/pokemon/${pokemon.name}`}>
+								<div className="flexbox">
+									<img src={pokemon.sprites.front_default} alt={pokemon.name} />
+									<div>
+										{pokemon.id}. {pokemon.name}
+									</div>
 								</div>
-							</div>
+							</Link>
 						))}
 					</ul>
 				</>

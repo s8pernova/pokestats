@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = ({ setSearchTerm }) => {
 	const [localSearchTerm, setLocalSearchTerm] = useState("");
@@ -13,9 +14,11 @@ const Header = ({ setSearchTerm }) => {
 		<header className="header-container">
 			<div className="header-content">
 				<div className="logo">
-					<img id="pokeball" src="./src/assets/pokeball.png" alt="Pokeball" />
+					<img id="pokeball" src="./src/assets/pokeball.png" />
 				</div>
-				<h2 className="title">PokéStats!</h2>
+				<Link className="title" to="/">
+					<h2>PokéStats!</h2>
+				</Link>
 				<div className="search-container">
 					<input
 						type="text"

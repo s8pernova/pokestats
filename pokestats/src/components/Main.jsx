@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useAppContext } from "../context/AppContext";
 
-const Main = ({ maxPokemonCount, setPokemonToFetch, setFilter, setMinLength, setMaxLength }) => {
+const Main = ({ maxPokemonCount }) => {
+	const { setPokemonToFetch, setFilter, setMinLength, setMaxLength } =
+		useAppContext();
+
 	const [pokemonCount, setPokemonCount] = useState(10);
 
 	const handleSliderChange = (e) => {
@@ -20,36 +24,15 @@ const Main = ({ maxPokemonCount, setPokemonToFetch, setFilter, setMinLength, set
 					onChange={(e) => setFilter(e.target.value)}
 				>
 					<option value="">All</option>
-					<option value="a">A</option>
-					<option value="b">B</option>
-					<option value="c">C</option>
-					<option value="d">D</option>
-					<option value="e">E</option>
-					<option value="f">F</option>
-					<option value="g">G</option>
-					<option value="h">H</option>
-					<option value="i">I</option>
-					<option value="j">J</option>
-					<option value="k">K</option>
-					<option value="l">L</option>
-					<option value="m">M</option>
-					<option value="n">N</option>
-					<option value="o">O</option>
-					<option value="p">P</option>
-					<option value="q">Q</option>
-					<option value="r">R</option>
-					<option value="s">S</option>
-					<option value="t">T</option>
-					<option value="u">U</option>
-					<option value="v">V</option>
-					<option value="w">W</option>
-					<option value="x">X</option>
-					<option value="y">Y</option>
-					<option value="z">Z</option>
+					{Array.from("abcdefghijklmnopqrstuvwxyz").map((letter) => (
+						<option key={letter} value={letter}>
+							{letter.toUpperCase()}
+						</option>
+					))}
 				</select>
 				<div className="length-range-filters">
 					<label>
-						Min Name Length: {" "}
+						Min Name Length:{" "}
 						<input
 							className="input-box"
 							type="number"
@@ -59,7 +42,7 @@ const Main = ({ maxPokemonCount, setPokemonToFetch, setFilter, setMinLength, set
 						/>
 					</label>
 					<label>
-						Max Name Length: {" "}
+						Max Name Length:{" "}
 						<input
 							className="input-box"
 							type="number"
@@ -79,7 +62,11 @@ const Main = ({ maxPokemonCount, setPokemonToFetch, setFilter, setMinLength, set
 					value={pokemonCount}
 					onChange={handleSliderChange}
 				/>
-				<h1>{pokemonCount}</h1>
+				<div className="flexbox">
+					<img src="./src/assets/left-lines.png" width="100" />
+					<h1>{pokemonCount}</h1>
+					<img src="./src/assets/right-lines.png" width="100" />
+				</div>
 				<button className="cool-btn" type="button" onClick={handleSubmit}>
 					Generate Pokémon!
 				</button>

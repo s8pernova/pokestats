@@ -4,10 +4,10 @@
 - [x] Respond to events triggered by user interaction and handle user input
 - [x] Use .map() to dynamically render a group of elements
 - [x] Use .filter() to filter data based on user input
-- [ ] Use React Router to build navigation around the application
-- [ ] Use Link to dynamically generate a list of routes
-- [ ] Use useParams() hook to extract parameters from a URL
-- [ ] Install and integrate an npm library into an existing React app
+- [x] Use React Router to build navigation around the application
+- [x] Use Link to dynamically generate a list of routes
+- [x] Use useParams() hook to extract parameters from a URL
+- [x] Install and integrate an npm library into an existing React app
 
 ## ❗ Required Features
 
@@ -26,11 +26,11 @@
   - [x] The filter restricts items in the list using a different attribute than the search bar
   - [x] The filter correctly filters items in the list, only displaying items matching the filter attribute in the dashboard
   - [x] The dashboard list dynamically updates as the user adjusts the filter
-- [ ] Clicking on an item in the list view displays more details about it
-  - [ ] Clicking on an item in the dashboard list navigates to a detail view for that item
-  - [ ] Detail view includes extra information about the item not included in the dashboard view
-  - [ ] The same sidebar is displayed in detail view as in dashboard view
-- [ ] Each detail view of an item has a direct, unique URL link to that item’s detail view page
+- [x] Clicking on an item in the list view displays more details about it
+  - [x] Clicking on an item in the dashboard list navigates to a detail view for that item
+  - [x] Detail view includes extra information about the item not included in the dashboard view
+  - [x] The same sidebar is displayed in detail view as in dashboard view
+- [x] Each detail view of an item has a direct, unique URL link to that item’s detail view page
 - [ ] The app includes at least two unique charts developed using the fetched data that tell an interesting story
   - [ ] At least two charts should be incorporated into the dashboard view of the site
   - [ ] Each chart should describe a different aspect of the dataset
@@ -43,8 +43,8 @@
 - [x] The user can enter specific bounds for filter values
 - [ ] The site’s customized dashboard contains more content that explains what is interesting about the data
   - [ ] e.g., an additional description, graph annotation, suggestion for which filters to use, or an additional page that explains more about the data
-- [ ] The site allows users to toggle between different data visualizations
-  - [ ] User should be able to use some mechanism to toggle between displaying and hiding visualizations
+- [x] The site allows users to toggle between different data visualizations
+  - [x] User should be able to use some mechanism to toggle between displaying and hiding visualizations
 
 <br>
 <img src="./pokestats/src/assets/walkthrough-video.gif">
