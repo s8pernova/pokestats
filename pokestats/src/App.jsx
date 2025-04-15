@@ -1,12 +1,11 @@
 import "./App.css";
-import { useState } from "react";
-import { useFetchAPI } from "./hooks/useFetchAPI.jsx";
+import { Routes, Route } from "react-router-dom";
+import { useAppContext } from "./context/AppContext.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import Header from "./components/Header.jsx";
 import Home from "./pages/Home.jsx";
-import { Routes, Route } from "react-router-dom";
+import PokemonCreator from "./pages/PokemonCreator.jsx";
 import PokemonDetails from "./pages/PokemonDetails.jsx";
-import { useAppContext } from "./context/AppContext.jsx";
 
 const App = () => {
 	const { pokemonToFetch, filter, setSearchTerm } = useAppContext();
@@ -27,6 +26,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/pokemon/:name" element={<PokemonDetails />} />
+				<Route path="/creator" element={<PokemonCreator />} />
 			</Routes>
 		</>
 	);
