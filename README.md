@@ -49,10 +49,10 @@
 - [x] A previously created crewmate can be deleted from the crewmate list
   - [x] Using the edit form detailed in the previous crewmates can be updated feature, there is a button that allows users to delete that crewmate
   - [x] After deleting a crewmate, the crewmate should no longer be visible in the summary page
-- [ ] Each crewmate has a direct, unique URL link to an info page about them
-  - [ ] Clicking on a crewmate in the summary page navigates to a detail page for that crewmate
-    - [ ] The detail page contains extra information about the crewmate not included in the summary page
-    - [ ] Users can navigate to the edit form from the detail page
+- [x] Each crewmate has a direct, unique URL link to an info page about them
+  - [x] Clicking on a crewmate in the summary page navigates to a detail page for that crewmate
+    - [x] The detail page contains extra information about the crewmate not included in the summary page
+    - [x] Users can navigate to the edit form from the detail page
 
 ## 🚀 Stretch Features
 
@@ -75,5 +75,6 @@
 
 <br>
 <img src="./pokestats/src/assets/walkthrough-video.gif">
+<img src="./pokestats/src/assets/walkthrough-video-2.gif">
 
-GIF created with [Ezgif](https://ezgif.com/)
+GIFs created with [Ezgif](https://ezgif.com/)

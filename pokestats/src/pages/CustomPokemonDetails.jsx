@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import useCaptilize from "../utils/capitalize.jsx";
 
@@ -49,6 +49,7 @@ const CustomPokemonDetail = () => {
 					<li>Level: {pokemon.level}</li>
 					<li>HP: {pokemon.hp}</li>
 					<li>Description: {pokemon.description || "N/A"}</li>
+					<Link to={`/pokemon/custom/${pokemon.id}/edit`}>Edit</Link>
 				</ul>
 			</div>
 		</div>
