@@ -8,6 +8,7 @@ import PokemonDetails from "./pages/PokemonDetails.jsx";
 import PokemonTeam from "./pages/PokemonTeam.jsx";
 import ErrorPage from "./pages/Error.jsx";
 import EditPokemon from "./pages/EditPokemon.jsx";
+import CustomPokemonDetail from "./pages/CustomPokemonDetails.jsx";
 
 const App = () => {
 	const { pokemonToFetch, filter } = useAppContext();
@@ -30,6 +31,7 @@ const App = () => {
 					<Route path="/pokemon/:name" element={<PokemonDetails />} />
 					<Route path="/creator" element={<PokemonCreator />} />
 					<Route path="/team" element={<PokemonTeam />} />
+					<Route path="/pokemon/custom/:id" element={<CustomPokemonDetail />} />
 					<Route path="/pokemon/custom/:id/edit" element={<EditPokemon />} />
 				</Route>
 			</Routes>
