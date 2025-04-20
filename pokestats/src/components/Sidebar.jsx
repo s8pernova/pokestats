@@ -6,10 +6,20 @@ const Sidebar = () => {
 			<h1 className="sidebar-header">SideBar</h1>
 			<div className="sidebar-menu">
 				<Link to="/creator">
-					<h2>PokéMaker</h2>
+					<h2>PokeMaker</h2>
 				</Link>
-				<h2>hello</h2>
-				<h2>world</h2>
+				<Link to="/team">
+					<h2>Custom Team</h2>
+				</Link>
+				<Link>
+					<h2
+						onClick={() => {
+							alert("Under construction!");
+						}}
+					>
+						Forum
+					</h2>
+				</Link>
 			</div>
 		</div>
 	);

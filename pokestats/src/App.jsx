@@ -1,14 +1,16 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useAppContext } from "./context/AppContext.jsx";
-import Sidebar from "./components/Sidebar.jsx";
-import Header from "./components/Header.jsx";
+import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import PokemonCreator from "./pages/PokemonCreator.jsx";
 import PokemonDetails from "./pages/PokemonDetails.jsx";
+import PokemonTeam from "./pages/PokemonTeam.jsx";
+import ErrorPage from "./pages/Error.jsx";
+import EditPokemon from "./pages/EditPokemon.jsx";
 
 const App = () => {
-	const { pokemonToFetch, filter, setSearchTerm } = useAppContext();
+	const { pokemonToFetch, filter } = useAppContext();
 
 	let apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}`;
 	if (filter === "mega") {
@@ -21,12 +23,15 @@ const App = () => {
 
 	return (
 		<>
-			<Header setSearchTerm={setSearchTerm} />
-			<Sidebar />
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/pokemon/:name" element={<PokemonDetails />} />
-				<Route path="/creator" element={<PokemonCreator />} />
+				<Route element={<Layout />}>
+					<Route path="*" element={<ErrorPage />} />
+					<Route path="/" element={<Home />} />
+					<Route path="/pokemon/:name" element={<PokemonDetails />} />
+					<Route path="/creator" element={<PokemonCreator />} />
+					<Route path="/team" element={<PokemonTeam />} />
+					<Route path="/pokemon/custom/:id/edit" element={<EditPokemon />} />
+				</Route>
 			</Routes>
 		</>
 	);

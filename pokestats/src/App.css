@@ -167,6 +167,7 @@
 	box-shadow: 0 5px 0 rgba(0, 0, 0, 0.1);
 	transition: all 0.05s ease-in-out;
 	cursor: pointer;
+	text-align: center;
 }
 .cool-btn:hover {
 	outline: 1px auto black;
@@ -175,6 +176,11 @@
 	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
 	transform: translateY(3px);
 	/* box-shadow: 0 0 0 rgba(0, 0, 0, 0.1); */
+}
+
+.square {
+	width: 50px;
+	height: 50px;
 }
 
 #pokeball {
@@ -189,8 +195,20 @@
 	width: 100%;
 	height: 80px;
 	background: #f2f2f2;
-	/* z-index: 999; */
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sprite-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+.pixel-img {
+	width: 150px;
+	image-rendering: pixelated;
 }
 
 .header-content {
@@ -206,7 +224,6 @@
 }
 
 .pokemon-detail {
-	/* margin: 2rem 0; */
 	background-color: #f0f8ff;
 	padding: 2rem;
 	border-radius: 15px;
@@ -258,16 +275,57 @@
 	color: #fff;
 }
 
+.creator-container,
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.notification-box {
+	position: fixed;
+	top: -100px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #4caf50;
+	color: white;
+	padding: 16px 24px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: top 0.5s ease-in-out;
+	z-index: 1000;
+	text-align: center;
+	font-weight: bold;
+}
+
+.notification-box.show {
+	top: 20px;
+}
+
+.pokemon-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	list-style: none;
+	padding: 0;
+	text-align: center;
+}
+.pokemon-card {
+	background-color: #f0f8ff;
+	padding: 1rem;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 .pokemon-list {
 	list-style: none;
 	padding: 0;
 	text-transform: capitalize;
-	font-family: "Minecraft";
 }
 
 @font-face {
 	font-family: "Minecraft";
-	src: url("../fonts/Minecraft.ttf") format("truetype");
+	src: url("/fonts/Minecraft.ttf") format("truetype");
 }
 
 @keyframes logo-spin {

@@ -153,7 +153,7 @@ const Stats = () => {
 					</div>
 
 					{/* Pokemon List */}
-					<ul className="pokemon-list">
+					<ul className="pokemon-list pixel-font">
 						{filteredResults.map((pokemon) => (
 							<Link key={pokemon.name} to={`/pokemon/${pokemon.name}`}>
 								<div className="flexbox">

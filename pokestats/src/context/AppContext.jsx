@@ -4,6 +4,13 @@ import { useFetchAPI } from "../hooks/useFetchAPI";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+	const initialFormState = {
+		name: "",
+		type: "",
+		level: 1,
+		hp: "",
+		description: "",
+	};
 	const [pokemonToFetch, setPokemonToFetch] = useState(10);
 	const [filter, setFilter] = useState(null);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -11,7 +18,10 @@ export const AppProvider = ({ children }) => {
 	const [maxLength, setMaxLength] = useState(null);
 	const [showStats, setShowStats] = useState(false);
 	const [showGraphs, setShowGraphs] = useState(false);
-	const [pokemon, setPokemon] = useState(null);
+	const [formData, setFormData] = useState(initialFormState);
+	const [showNotification, setShowNotification] = useState(false);
+	const [pokemonList, setPokemonList] = useState([]);
+	const [spriteIndex, setSpriteIndex] = useState(0);
 
 	let apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}`;
 	if (filter === "mega") {
@@ -41,10 +51,19 @@ export const AppProvider = ({ children }) => {
 				setShowStats,
 				showGraphs,
 				setShowGraphs,
+				formData,
+				setFormData,
+				showNotification,
+				setShowNotification,
+				pokemonList,
+				setPokemonList,
+				spriteIndex,
+				setSpriteIndex,
 				data,
 				loading,
 				error,
 				totalCount,
+				initialFormState,
 			}}
 		>
 			{children}

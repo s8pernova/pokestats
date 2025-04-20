@@ -1,39 +1,61 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import { useAppContext } from "../context/AppContext";
 
-const PokemonCreator = () => {
+const EditPokemon = () => {
+	const { id } = useParams();
+	const navigate = useNavigate();
 	const {
 		formData,
 		setFormData,
+		spriteIndex,
+		setSpriteIndex,
 		showNotification,
 		setShowNotification,
-		initialFormState,
 	} = useAppContext();
 
+	const [loading, setLoading] = useState(true);
+	const [notificationMessage, setNotificationMessage] = useState("");
+
 	const spriteOptions = [
-		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", // Bulbasaur
-		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png", // Charmander
-		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png", // Squirtle
+		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
 	];
+	const currentSprite = spriteOptions[spriteIndex];
 
-	const [sprite, setSprite] = useState(0);
-	const currentSprite = spriteOptions[sprite];
+	// Fetch Pokémon on load
+	useEffect(() => {
+		const fetchPokemon = async () => {
+			const { data, error } = await supabase
+				.from("Pokemon")
+				.select("*")
+				.eq("id", parseInt(id))
+				.single();
 
-	const rotateLeft = () => {
-		setSprite(
-			(prev) => (prev - 1 + spriteOptions.length) % spriteOptions.length
-		);
-	};
+			if (error) {
+				console.error("Failed to fetch Pokémon:", error.message);
+				return;
+			}
 
-	const rotateRight = () => {
-		setSprite((prev) => (prev + 1) % spriteOptions.length);
-	};
+			setFormData({
+				name: data.name,
+				type: data.type,
+				level: data.level,
+				hp: data.hp,
+				description: data.description,
+			});
 
-	/**
-	 * Updates the form data state when input fields change
-	 * @param {Object} e - The event object
-	 */
+			const foundIndex = spriteOptions.indexOf(data.sprite_url);
+			if (foundIndex !== -1) setSpriteIndex(foundIndex);
+
+			setLoading(false);
+		};
+
+		fetchPokemon();
+	}, [id]);
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({
@@ -42,52 +64,75 @@ const PokemonCreator = () => {
 		}));
 	};
 
-	/**
-	 * Handles form submission by saving the Pokemon data to Supabase
-	 * Displays notification and resets form fields after successful submission
-	 * @param {Object} e - The event object
-	 */
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Submitting:", formData);
 
-		const { data, error } = await supabase.from("Pokemon").insert([
-			{
+		const { error } = await supabase
+			.from("Pokemon")
+			.update({
 				name: formData.name,
 				type: formData.type,
 				level: parseInt(formData.level),
 				hp: parseInt(formData.hp),
 				description: formData.description,
 				sprite_url: currentSprite,
-			},
-		]);
+			})
+			.eq("id", id);
 
 		if (error) {
-			console.error("Error adding Pokémon:", error.message);
+			console.error("Failed to update Pokémon:", error.message);
 		} else {
+			setNotificationMessage("Pokémon updated!");
 			setShowNotification(true);
-
-			setFormData(initialFormState);
-
 			setTimeout(() => {
 				setShowNotification(false);
-			}, 3000);
+				navigate("/team");
+			}, 2000);
 		}
 	};
+
+	const handleDelete = async () => {
+		const confirmed = confirm("Are you sure you want to delete this Pokémon?");
+		if (!confirmed) return;
+
+		const { error } = await supabase.from("Pokemon").delete().eq("id", id);
+		if (error) {
+			console.error("Delete failed:", error.message);
+		} else {
+			setNotificationMessage("Pokémon deleted!");
+			setShowNotification(true);
+			setTimeout(() => {
+				setShowNotification(false);
+				navigate("/team");
+			}, 2000);
+		}
+	};
+
+	const rotateLeft = () => {
+		setSpriteIndex(
+			(prev) => (prev - 1 + spriteOptions.length) % spriteOptions.length
+		);
+	};
+
+	const rotateRight = () => {
+		setSpriteIndex((prev) => (prev + 1) % spriteOptions.length);
+	};
+
+	if (loading) return <p>Loading Pokémon...</p>;
 
 	return (
 		<div className="creator-container pixel-font">
 			<div className={`notification-box ${showNotification ? "show" : ""}`}>
-				Pokémon created successfully!
+				{notificationMessage}
 			</div>
 
-			<h2>Create Your Pokémon!</h2>
+			<h2>Edit Your Pokémon</h2>
 
 			<div className="sprite-container">
 				<button onClick={rotateLeft} className="cool-btn square">
 					⬅️
 				</button>
-				<img src={currentSprite} className="pixel-img" />
+				<img src={currentSprite} alt="Sprite" className="pixel-img" />
 				<button onClick={rotateRight} className="cool-btn square">
 					➡️
 				</button>
@@ -173,12 +218,22 @@ const PokemonCreator = () => {
 				</label>
 				<br />
 
-				<button type="submit" className="cool-btn center">
-					Create Pokémon
-				</button>
+				<div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+					<button type="submit" className="cool-btn">
+						Update
+					</button>
+					<button
+						type="button"
+						onClick={handleDelete}
+						className="cool-btn"
+						style={{ backgroundColor: "#dc3545", color: "white" }}
+					>
+						Delete
+					</button>
+				</div>
 			</form>
 		</div>
 	);
 };
 
-export default PokemonCreator;
+export default EditPokemon;
