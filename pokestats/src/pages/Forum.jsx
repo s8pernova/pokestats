@@ -16,15 +16,19 @@ const Forum = () => {
 					e.preventDefault();
 					const title = e.target.title.value.trim();
 					const content = e.target.content.value.trim();
+					const image = e.target.image.value.trim();
+
 					if (title) {
 						const newPost = {
 							id: crypto.randomUUID(),
 							title,
 							content,
+							image,
 							upvotes: 0,
 							date: new Date().toISOString(),
 							comments: [],
 						};
+
 						setPosts([newPost, ...posts]);
 						e.target.reset();
 					}
@@ -41,9 +45,20 @@ const Forum = () => {
 					placeholder="Say something..."
 					className="form-textarea"
 				/>
-				<button type="submit" className="cool-btn">
-					Create Post
-				</button>
+				<div>
+					{/* className="init-post-actions" */}
+					<input
+						name="image"
+						placeholder="Image URL"
+						className="form-input cool-btn upload-img"
+					/>
+					{/* <button type="button" className="cool-btn upload-img">
+						<i className="fa-solid fa-upload"></i>
+					</button> */}
+					<button type="submit" className="cool-btn">
+						Create Post
+					</button>
+				</div>
 			</form>
 
 			{/* SEARCH AND SORT CONTROLS */}
@@ -76,8 +91,11 @@ const Forum = () => {
 					)
 					.map((post) => (
 						<li key={post.id} className="post-card">
-							<h3 className="post-text post-title">{post.title}</h3>
+							<Link to={`/post/${post.id}`}>
+								<h3 className="post-text post-title">{post.title}</h3>
+							</Link>
 							<p className="post-text post-content">{post.content}</p>
+							<img src={post.image} alt={post.title} />
 							<div className="post-meta">
 								<span>{new Date(post.date).toLocaleString()}</span>
 								<span>👍 {post.upvotes}</span>
@@ -102,6 +120,12 @@ const Forum = () => {
 									}
 								>
 									Delete
+								</button>
+								<button
+									onClick={() => alert("Under construction!")}
+									className="def-btn comment-btn"
+								>
+									Comment
 								</button>
 							</div>
 						</li>

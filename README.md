@@ -54,16 +54,16 @@
     - [x] The detail page contains extra information about the crewmate not included in the summary page
     - [x] Users can navigate to the edit form from the detail page
 - [ ] Web app includes a create form that allows the user to create posts
-  - [ ] Form requires users to add a post title
+  - [x] Form requires users to add a post title
   - [ ] Forms should have the option for users to add:
-    - [ ]additional textual content
-    - [ ]an image added as an external image URL
+    - [x] additional textual content
+    - [ ] an image added as an external image URL
 - [ ] Web app includes a home feed displaying previously created posts
-  - [ ] Web app must include home feed displaying previously created posts
-  - [ ] By default, each post on the posts feed should show only the post's:
-    - [ ] creation time
-    - [ ] title
-    - [ ] upvotes count
+  - [x] Web app must include home feed displaying previously created posts
+  - [x] By default, each post on the posts feed should show only the post's:
+    - [x] creation time
+    - [x] title
+    - [x] upvotes count
   - [ ] Clicking on a post should direct the user to a new page for the selected post
 - [ ] Users can view posts in different ways
   - [ ] Users can sort posts by either:

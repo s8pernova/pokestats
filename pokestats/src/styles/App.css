@@ -9,10 +9,6 @@
 	font-family: "Minecraft";
 }
 
-.def-btn {
-	width: 100px;
-}
-
 .logo {
 	display: flex;
 	align-items: center;
@@ -408,17 +404,39 @@ form {
 	margin-bottom: 0.5rem;
 }
 
+.upload-img {
+	width: 50px;
+}
+
+.init-post-actions {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-evenly;
+}
+
 .post-actions {
 	display: flex;
+	margin-top: 20px;
+	justify-content: space-evenly;
 	gap: 0.5rem;
 }
 
-.upvote-btn,
-.delete-btn {
+.def-btn {
+	width: 100px;
+	height: 40px;
 	padding: 0.5rem 0.75rem;
 	border: none;
-	border-radius: 6px;
+	border-radius: 8px;
+	box-shadow: 0 5px 0 rgba(0, 0, 0, 0.1);
 	cursor: pointer;
+}
+
+.comment-btn {
+	background: #e0e0e0;
+	color: #333;
+}
+.comment-btn:hover {
+	background: #d0d0d0;
 }
 
 .upvote-btn {
