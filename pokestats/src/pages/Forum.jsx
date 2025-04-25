@@ -1,9 +1,36 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Forum = () => {
 	const [posts, setPosts] = useState([]);
 	const [search, setSearch] = useState("");
 	const [sortBy, setSortBy] = useState("date");
+
+	const handleCreatePost = async (e) => {
+		e.preventDefault();
+		const title = e.target.title.value.trim();
+		const content = e.target.content.value.trim();
+		const image = e.target.image.value.trim();
+
+		if (title) {
+			const { data, error } = await supabase.from("posts").insert([
+				{
+					title,
+					content,
+					image,
+					upvotes: 0,
+					comments: [],
+				},
+			]);
+
+			if (error) {
+				console.error("Error creating post:", error);
+			} else {
+				setPosts([data[0], ...posts]);
+				e.target.reset();
+			}
+		}
+	};
 
 	return (
 		<div className="forum-container">
@@ -91,11 +118,11 @@ const Forum = () => {
 					)
 					.map((post) => (
 						<li key={post.id} className="post-card">
-							<Link to={`/post/${post.id}`}>
+							<Link to={`/forum/post/${post.id}`}>
 								<h3 className="post-text post-title">{post.title}</h3>
 							</Link>
 							<p className="post-text post-content">{post.content}</p>
-							<img src={post.image} alt={post.title} />
+							{post.image && <img src={post.image} alt={post.title} />}
 							<div className="post-meta">
 								<span>{new Date(post.date).toLocaleString()}</span>
 								<span>👍 {post.upvotes}</span>
