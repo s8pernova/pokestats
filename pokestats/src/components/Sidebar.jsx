@@ -1,24 +1,20 @@
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ closeSidebar }) => {
 	return (
 		<div className="sidebar-container pixel-font">
-			<h1 className="sidebar-header">SideBar</h1>
+			<h1 className="sidebar-header">
+				<img src="./src/assets/pokeball.png" width="100px" />
+			</h1>
 			<div className="sidebar-menu">
-				<Link to="/creator">
+				<Link to="/creator" onClick={closeSidebar}>
 					<h2>PokeMaker</h2>
 				</Link>
-				<Link to="/team">
+				<Link to="/team" onClick={closeSidebar}>
 					<h2>Custom Team</h2>
 				</Link>
-				<Link>
-					<h2
-						onClick={() => {
-							alert("Under construction!");
-						}}
-					>
-						Forum
-					</h2>
+				<Link to="/forum" onClick={closeSidebar}>
+					<h2>Forum</h2>
 				</Link>
 			</div>
 		</div>

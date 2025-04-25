@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import { Routes, Route } from "react-router-dom";
 import { useAppContext } from "./context/AppContext.jsx";
 import Layout from "./components/Layout.jsx";
@@ -9,6 +9,7 @@ import PokemonTeam from "./pages/PokemonTeam.jsx";
 import ErrorPage from "./pages/Error.jsx";
 import EditPokemon from "./pages/EditPokemon.jsx";
 import CustomPokemonDetail from "./pages/CustomPokemonDetails.jsx";
+import Forum from "./pages/Forum.jsx";
 
 const App = () => {
 	const { pokemonToFetch, filter } = useAppContext();
@@ -33,6 +34,7 @@ const App = () => {
 					<Route path="/team" element={<PokemonTeam />} />
 					<Route path="/pokemon/custom/:id" element={<CustomPokemonDetail />} />
 					<Route path="/pokemon/custom/:id/edit" element={<EditPokemon />} />
+					<Route path="/forum" element={<Forum />} />
 				</Route>
 			</Routes>
 		</>

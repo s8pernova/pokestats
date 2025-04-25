@@ -13,9 +13,7 @@ const Header = ({ setSearchTerm }) => {
 	return (
 		<header className="header-container">
 			<div className="header-content">
-				<div className="logo">
-					<img id="pokeball" src="./src/assets/pokeball.png" />
-				</div>
+				<div></div>
 				<Link className="title" to="/">
 					<h2>PokéStats!</h2>
 				</Link>
