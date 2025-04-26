@@ -53,35 +53,35 @@
   - [x] Clicking on a crewmate in the summary page navigates to a detail page for that crewmate
     - [x] The detail page contains extra information about the crewmate not included in the summary page
     - [x] Users can navigate to the edit form from the detail page
-- [ ] Web app includes a create form that allows the user to create posts
+- [x] Web app includes a create form that allows the user to create posts
   - [x] Form requires users to add a post title
-  - [ ] Forms should have the option for users to add:
+  - [x] Forms should have the option for users to add:
     - [x] additional textual content
-    - [ ] an image added as an external image URL
-- [ ] Web app includes a home feed displaying previously created posts
+    - [x] an image added as an external image URL
+- [x] Web app includes a home feed displaying previously created posts
   - [x] Web app must include home feed displaying previously created posts
   - [x] By default, each post on the posts feed should show only the post's:
     - [x] creation time
     - [x] title
     - [x] upvotes count
-  - [ ] Clicking on a post should direct the user to a new page for the selected post
-- [ ] Users can view posts in different ways
-  - [ ] Users can sort posts by either:
-    - [ ] creation time
-    - [ ] upvotes count
-  - [ ] Users can search for posts by title
+  - [x] Clicking on a post should direct the user to a new page for the selected post
+- [x] Users can view posts in different ways
+  - [x] Users can sort posts by either:
+    - [x] creation time
+    - [x] upvotes count
+  - [x] Users can search for posts by title
 - [ ] Users can interact with each post in different ways
   - [ ] The app includes a separate post page for each created post when clicked, where any additional information is shown, including:
     - [ ] content
     - [ ] image
     - [ ] comments
   - [ ] Users can leave comments underneath a post on the post page
-  - [ ] Each post includes an upvote button on the post page.
-  - [ ] Each click increases the post's upvotes count by one
-  - [ ] Users can upvote any post any number of times
+  - [x] Each post includes an upvote button on the post page.
+  - [x] Each click increases the post's upvotes count by one
+  - [x] Users can upvote any post any number of times
 - [ ] A post that a user previously created can be edited or deleted from its post pages
   - [ ] After a user creates a new post, they can go back and edit the post
-  - [ ] A previously created post can be deleted from its post page
+  - [x] A previously created post can be deleted from its post page
 
 ## 🚀 Stretch Features
 
@@ -111,5 +111,6 @@
 <br>
 <img src="./pokestats/src/assets/walkthrough-video.gif">
 <img src="./pokestats/src/assets/walkthrough-video-2.gif">
+<img src="./pokestats/src/assets/walkthrough-video-3.gif">
 
 GIFs created with [Ezgif](https://ezgif.com/)
