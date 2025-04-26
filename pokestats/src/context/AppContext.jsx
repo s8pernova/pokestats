@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useFetchAPI } from "../hooks/useFetchAPI";
 
 const AppContext = createContext();
@@ -22,8 +22,11 @@ export const AppProvider = ({ children }) => {
 	const [showNotification, setShowNotification] = useState(false);
 	const [pokemonList, setPokemonList] = useState([]);
 	const [spriteIndex, setSpriteIndex] = useState(0);
+	const [posts, setPosts] = useState([]);
+	const [loadingPosts, setLoadingPosts] = useState(true);
 
 	let apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}`;
+
 	if (filter === "mega") {
 		apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}&offset=0`;
 	} else if (filter === "legendary") {
@@ -31,6 +34,21 @@ export const AppProvider = ({ children }) => {
 	} else if (filter === "gen1") {
 		apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonToFetch}&offset=0`;
 	}
+
+	useEffect(() => {
+		const fetchPosts = async () => {
+			const { data, error } = await supabase
+				.from("posts")
+				.select("*")
+				.order("created_at", { ascending: false });
+
+			if (error) console.error(error);
+			else setPosts(data);
+			setLoadingPosts(false);
+		};
+
+		fetchPosts();
+	}, []);
 
 	const { data, loading, error, totalCount } = useFetchAPI(apiUrl);
 
@@ -59,6 +77,10 @@ export const AppProvider = ({ children }) => {
 				setPokemonList,
 				spriteIndex,
 				setSpriteIndex,
+				posts,
+				setPosts,
+				loadingPosts,
+				setLoadingPosts,
 				data,
 				loading,
 				error,

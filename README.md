@@ -53,6 +53,35 @@
   - [x] Clicking on a crewmate in the summary page navigates to a detail page for that crewmate
     - [x] The detail page contains extra information about the crewmate not included in the summary page
     - [x] Users can navigate to the edit form from the detail page
+- [x] Web app includes a create form that allows the user to create posts
+  - [x] Form requires users to add a post title
+  - [x] Forms should have the option for users to add:
+    - [x] additional textual content
+    - [x] an image added as an external image URL
+- [x] Web app includes a home feed displaying previously created posts
+  - [x] Web app must include home feed displaying previously created posts
+  - [x] By default, each post on the posts feed should show only the post's:
+    - [x] creation time
+    - [x] title
+    - [x] upvotes count
+  - [x] Clicking on a post should direct the user to a new page for the selected post
+- [x] Users can view posts in different ways
+  - [x] Users can sort posts by either:
+    - [x] creation time
+    - [x] upvotes count
+  - [x] Users can search for posts by title
+- [ ] Users can interact with each post in different ways
+  - [ ] The app includes a separate post page for each created post when clicked, where any additional information is shown, including:
+    - [ ] content
+    - [ ] image
+    - [ ] comments
+  - [ ] Users can leave comments underneath a post on the post page
+  - [x] Each post includes an upvote button on the post page.
+  - [x] Each click increases the post's upvotes count by one
+  - [x] Users can upvote any post any number of times
+- [ ] A post that a user previously created can be edited or deleted from its post pages
+  - [ ] After a user creates a new post, they can go back and edit the post
+  - [x] A previously created post can be deleted from its post page
 
 ## 🚀 Stretch Features
 
@@ -64,17 +93,24 @@
   - [x] e.g., an additional description, graph annotation, suggestion for which filters to use, or an additional page that explains more about the data
 - [x] The site allows users to toggle between different data visualizations
   - [x] User should be able to use some mechanism to toggle between displaying and hiding visualizations
-- [ ] A crewmate can be given a category upon creation which restricts their attribute value options
-  - [ ] e.g., a Dungeons and Dragons class or a development team role (project manager, product owner, etc.)
-  - [ ] User can choose a category option to describe their crewmate before any attributes are specified
-  - [ ] Based on the category value, users are allowed to access only a subset of the possible attributes
-- [ ] A section of the summary page, displays summary statistics about a user’s crew on their crew page
-  - [ ] e.g., the percent of members with a certain attribute
-- [ ] The summary page displays a custom “success” metric about a user’s crew which changes the look of the crewmate list
-  - [ ] e.g., a pirate crew’s predicted success at commandeering a new galley
+- [ ] Web app implements pseudo-authentication
+  - [ ] Users can only edit and delete posts or delete comments by entering the secret key, which is set by the user during post creation
+  - [ ] Upon launching the webzzzzz app, the user is assigned a random user ID. It will be associated with all posts and comments that they make and displayed on them
+  - [ ] For both options, only the original user author of a post can update or delete it
+- [ ] Users can repost a previous post by referencing its post ID
+  - [ ] On the post page of the new post, the referenced post is displayed and linked, creating a thread
+- [ ] Users can customize the interface
+  - [ ] e.g., selecting the color scheme or showing the content and image of each post on the home feed
+- [ ] Users can add more characteristics to their posts
+  - [ ] Users can share and view web videos
+  - [ ] Users can set flags such as "Question" or "Opinion" while creating a post
+  - [ ] Users can filter posts by flags on the home feed
+  - [ ] Users can upload images directly from their local machine as an image file
+- [ ] Web app displays a loading animation whenever data is being fetched
 
 <br>
 <img src="./pokestats/src/assets/walkthrough-video.gif">
 <img src="./pokestats/src/assets/walkthrough-video-2.gif">
+<img src="./pokestats/src/assets/walkthrough-video-3.gif">
 
 GIFs created with [Ezgif](https://ezgif.com/)
